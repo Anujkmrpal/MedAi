@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedAi — Medical Report Helper</title>
+    <meta name="description" content="A simple mobile-style demo that explains medical reports in plain language." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="phone-shell">
+      <div class="app-bar">
+        <div class="brand">
+          <span class="brand-mark">✚</span>
+          <span>MedAi</span>
+        </div>
+        <span class="status-pill">Offline</span>
+      </div>
+
+      <section class="intro-card">
+        <p class="eyebrow">Simple • Secure • Helpful</p>
+        <h1>अपना report आसान भाषा में समझें</h1>
+        <p class="intro-text">Upload your report, get a simple explanation, and see which doctor may be the right person to consult.</p>
+      </section>
+
+      <section class="card">
+        <label class="input-label" for="reportFile">Upload report</label>
+        <input id="reportFile" type="file" accept=".txt,.json,.pdf,.png,.jpg,.jpeg" />
+        <div id="selectedFileLabel" class="selected-file-label">No file selected</div>
+
+        <label class="input-label" for="language">Choose language</label>
+        <select id="language">
+          <option value="english">English</option>
+          <option value="hindi">Hindi</option>
+          <option value="punjabi">Punjabi</option>
+        </select>
+
+        <div class="button-row">
+          <button id="analyzeBtn" class="btn btn-primary full-width">Analyze report</button>
+          <button id="resetBtn" class="btn secondary-btn">Reset</button>
+        </div>
+      </section>
+
+      <section id="resultSection" class="card result-card hidden">
+        <div class="result-header">
+          <div>
+            <p class="eyebrow">Result</p>
+            <h2 id="reportType">Medical report detected</h2>
+          </div>
+          <span id="confidenceBadge" class="confidence-badge">87% confidence</span>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-box">
+            <p class="small-label">Report type</p>
+            <h3 id="reportCategory">Complete blood count</h3>
+          </div>
+          <div class="mini-box">
+            <p class="small-label">Doctor to consult</p>
+            <h3 id="doctorSuggestion">General physician</h3>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h3>What it means</h3>
+          <ul id="findingsList"></ul>
+        </div>
+
+        <div class="info-block">
+          <h3>Simple explanation</h3>
+          <p id="plainSummary"></p>
+        </div>
+
+        <div class="info-block">
+          <h3>Why this matters</h3>
+          <p id="possibleConcern"></p>
+        </div>
+
+        <div class="note-box" id="safetyNote"></div>
+        <div class="error-box hidden" id="errorBox"></div>
+      </section>
+    </div>
+
+    <script src="sdk.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
